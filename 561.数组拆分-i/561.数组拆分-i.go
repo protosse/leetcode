@@ -51,11 +51,27 @@
  *
  *
  */
+package main
+
+import (
+	"fmt"
+	"sort"
+)
 
 // @lc code=start
 func arrayPairSum(nums []int) int {
-
+	sort.Ints(nums)
+	result := 0
+	for i := 0; i < len(nums); i++ {
+		if i%2 == 0 {
+			result += nums[i]
+		}
+	}
+	return result
 }
 
 // @lc code=end
 
+func main() {
+	fmt.Println(arrayPairSum([]int{6, 2, 6, 5, 1, 2}))
+}
