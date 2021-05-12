@@ -66,11 +66,7 @@
  *
  */
 
-package main
-
-import (
-	"fmt"
-)
+package algorithm
 
 // @lc code=start
 func isMonotonic(A []int) bool {
@@ -105,7 +101,3 @@ func isMonotonic(A []int) bool {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(isMonotonic([]int{11, 11, 9, 4, 3, 3, 3, 1, -1, -1, 3, 3, 3, 5, 5, 5}))
-}

@@ -51,10 +51,9 @@
  *
  *
  */
-package main
+package algorithm
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -69,7 +68,3 @@ func arrayPairSum(nums []int) int {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(arrayPairSum([]int{6, 2, 6, 5, 1, 2}))
-}
