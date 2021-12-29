@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode.cn id=3 lang=swift
+ * @lc app=leetcode.cn id=3 lang=golang
  *
  * [3] 无重复字符的最长子串
  *
@@ -60,34 +60,10 @@
  *
  */
 
-// @lc code=start
-class Solution {
-    func lengthOfLongestSubstring(_ s: String) -> Int {
-        var start = 0
-        var maxLength = 0
-        var dict = [String.Element: Int]()
-        for (i, v) in s.enumerated() {
-            if let index = dict[v], index >= start {
-                start = index + 1
-            }
-            maxLength = max(maxLength, i - start + 1)
-            dict[v] = i
-        }
-        return maxLength
-    }
+package longestsubstringwithoutrepeatingcharacters
 
-    func lengthOfLongestSubstring_array(_ s: String) -> Int {
-        var maxLength = 0
-        var dis = [String.Element]()
-        for v in s {
-            if let index = dis.firstIndex(of: v) {
-                dis.removeSubrange(0 ... index)
-            }
-            dis.append(v)
-            maxLength = max(dis.count, maxLength)
-        }
-        return maxLength
-    }
+// @lc code=start
+func lengthOfLongestSubstring(s string) int {
 }
 
 // @lc code=end

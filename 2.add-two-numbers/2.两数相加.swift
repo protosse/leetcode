@@ -72,7 +72,7 @@ class Solution {
         var n2 = l2
         var head = ListNode()
         var node: ListNode? = head
-        var add = 0
+        var add = 0 // 进位
         repeat {
             var v = (n1?.val ?? 0) + (n2?.val ?? 0) + add
             add = v / 10
