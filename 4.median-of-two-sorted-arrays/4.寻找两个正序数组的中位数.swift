@@ -73,7 +73,94 @@
 
 // @lc code=start
 class Solution {
+    /// 第k小
     func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
+        let m = nums1.count
+        let n = nums2.count
+        if (m + n) % 2 == 1 {
+            return Double(getKth(nums1, 0, m - 1, nums2, 0, n - 1, (m + n + 1) / 2))
+        } else {
+            return Double(getKth(nums1, 0, m - 1, nums2, 0, n - 1, (m + n + 1) / 2) + getKth(nums1, 0, m - 1, nums2, 0, n - 1, (m + n + 2) / 2)) * 0.5
+        }
+    }
+
+    func getKth(_ nums1: [Int], _ start1: Int, _ end1: Int, _ nums2: [Int], _ start2: Int, _ end2: Int, _ k: Int) -> Int {
+        let len1 = end1 - start1 + 1
+        let len2 = end2 - start2 + 1
+        // 保证nums1是短的那个数组
+        if len1 > len2 {
+            return getKth(nums2, start2, end2, nums1, start1, end1, k)
+        }
+
+        if len1 == 0 {
+            return nums2[start2 + k - 1]
+        }
+
+        if k == 1 {
+            return min(nums1[start1], nums2[start2])
+        }
+
+        let i = start1 + min(len1, k / 2) - 1
+        let j = start2 + min(len2, k / 2) - 1
+
+        if nums1[i] > nums2[j] {
+            return getKth(nums1, start1, end1, nums2, j + 1, end2, k - (j - start2 + 1))
+        } else {
+            return getKth(nums1, i + 1, end1, nums2, start2, end2, k - (i - start1 + 1))
+        }
+    }
+
+    /// 分割线
+    func findMedianSortedArrays_separate(_ nums1: [Int], _ nums2: [Int]) -> Double {
+        var nums1 = nums1
+        var nums2 = nums2
+        // 保证nums1是短的那个数组
+        if nums1.count > nums2.count {
+            let temp = nums1
+            nums1 = nums2
+            nums2 = temp
+        }
+
+        let m = nums1.count
+        let n = nums2.count
+
+        // 分割线左边的元素个数
+        let totalLeft = (m + n + 1) / 2
+
+        // 在 nums1 的区间 [0, m] 里查找恰当的分割线，
+        // 使得 nums1[i - 1] <= nums2[j] && nums2[j - 1] <= nums1[i]
+        var left = 0
+        var right = m
+
+        while left < right {
+            let i = left + (right - left + 1) / 2
+            let j = totalLeft - i
+            if nums1[i - 1] > nums2[j] {
+                // 下一轮搜索的区间 [left, i - 1]
+                right = i - 1
+            } else {
+                // 下一轮搜索的区间 [i, right]
+                left = i
+            }
+        }
+
+        let i = left
+        let j = totalLeft - i
+
+        let nums1LeftMax = i == 0 ? Int.min : nums1[i - 1]
+        let nums1RightMin = i == m ? Int.max : nums1[i]
+        let nums2LeftMax = j == 0 ? Int.min : nums2[j - 1]
+        let nums2RightMin = j == n ? Int.max : nums2[j]
+
+        if (m + n) % 2 == 1 {
+            return Double(max(nums1LeftMax, nums2LeftMax))
+        } else {
+            return Double(max(nums1LeftMax, nums2LeftMax) + min(nums1RightMin, nums2RightMin)) / 2
+        }
+    }
+
+    /// 归并
+    func findMedianSortedArrays_loop(_ nums1: [Int], _ nums2: [Int]) -> Double {
         let count = nums1.count + nums2.count
         var i = 0, j = 0
         var value = 0
