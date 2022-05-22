@@ -64,6 +64,22 @@ package longestsubstringwithoutrepeatingcharacters
 
 // @lc code=start
 func lengthOfLongestSubstring(s string) int {
+	dic := make(map[rune]int)
+	start := 0
+	maxLength := 0
+
+	for i, n := range s {
+		if val, ok := dic[n]; ok && val >= start {
+			start = val + 1
+		}
+
+		length := i - start + 1
+		if length > maxLength {
+			maxLength = length
+		}
+		dic[n] = i
+	}
+	return maxLength
 }
 
 // @lc code=end
