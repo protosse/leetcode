@@ -74,7 +74,39 @@ class ListNode:
 #         self.val = val
 #         self.next = next
 class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        # 虚拟头节点
+        head = ListNode()
+        cur = head
+        i = list1
+        j = list2
+
+        while i != None and j != None:
+            # 比较两个节点的值，将较小的节点接到cur的后面
+            if i.val <= j.val:
+                cur.next = i
+                i = i.next
+            else:
+                cur.next = j
+                j = j.next
+                # 不断向前
+            cur = cur.next
+        # 如果有一个为空了，那么直接将另一个链表接到cur的后面
+        cur.next = i if i != None else j
+        return head.next
+
+    def merge(self, lists: List[Optional[ListNode]], start, end) -> Optional[ListNode]:
+        if start == end:
+            return lists[start]
+        if start > end:
+            return None
+        mid = (start + end) // 2
+        # can also
+        # mid = (start + end) >> 1
+        return self.mergeTwoLists(self.merge(lists, start, mid), self.merge(lists, mid + 1, end))
+
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        pass
+        return self.merge(lists, 0, len(lists) - 1)
+
 # @lc code=end
 
