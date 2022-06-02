@@ -60,7 +60,44 @@ class ListNode:
 #         self.val = val
 #         self.next = next
 class Solution:
+    def reverseN(self, head: ListNode, n: int) -> ListNode:
+        if n == 1:
+            return head
+        last = self.reverseN(head.next, n-1)
+        head_next = head.next
+        head.next = head_next.next
+        head_next.next = head
+        return last
+
     def reverseBetween(self, head: ListNode, left: int, right: int) -> ListNode:
-        pass
+        if left == 1:
+            return self.reverseN(head, right)
+        head.next = self.reverseBetween(head.next, left - 1, right - 1)
+        return head
+
+    def reverseBetween_iter(self, head: ListNode, left: int, right: int) -> ListNode:
+        if left == right:
+            return head
+
+        dummyNode = ListNode()
+        dummyNode.next = head
+        pre = dummyNode
+
+        for _ in range(left - 1):
+            pre = pre.next
+
+        cur = pre.next
+        last = None
+        for _ in range(right - left + 1):
+            next = cur.next
+            cur.next = last 
+            last = cur
+            cur = next
+
+        pre.next.next = cur
+        pre.next = last
+
+        return dummyNode.next
+
 # @lc code=end
 
