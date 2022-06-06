@@ -58,6 +58,9 @@ class ListNode:
 #         self.val = val
 #         self.next = next
 class Solution:
+    def __init__(self) -> None:
+        self.last = None
+
     def isPalindrome_reverse(self, head: ListNode) -> bool:
         pre = None
         cur = ListNode(head.val, head.next)
@@ -78,8 +81,52 @@ class Solution:
             p = p.next
         return True
 
+    def traverse(self, node: ListNode) -> bool:
+        if node == None:
+            return True
+        res = self.traverse(node.next) and (node.val == self.last.val)
+        self.last = self.last.next
+        return res
+
+    def isPalindrome_traverse(self, head: ListNode) -> bool:
+        self.last = head
+        return self.traverse(head)
+
+
     def isPalindrome(self, head: ListNode) -> bool:
-        pass
+        slow = head
+        fast = head
+
+        # 先找到中点
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # fast 不为空，表示链表长度为奇数，则从 slow 的 next 开始反转操作
+        if fast != None:
+            slow = slow.next
+        
+        # 反转 slow 之后的链表
+        pre = None
+        cur = slow
+        while cur:
+            next = cur.next
+            cur.next = pre
+            pre = cur
+            cur = next
+        
+        # 比较左右两部分链表是否相同
+        left = head
+        right = pre
+        while right:
+            if right.val != left.val:
+                return False
+            left = left.next
+            right = right.next
+        
+        return True
+
+        
                     
 # @lc code=end
 
