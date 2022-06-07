@@ -1,4 +1,4 @@
-接着[141题](../141.linked-list-cycle/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8.py)
+接着[141题](../141.linked-list-cycle/141.环形链表.py)
 
 如果不是环型链表就直接返回None
 
