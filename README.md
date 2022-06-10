@@ -19,6 +19,7 @@
 | 141  |         环形链表          |                                                   [Python](./141.linked-list-cycle/141.环形链表.py)                                                    |   ✅   |
 | 142  |       环形链表\_ii        |                                                [Python](./142.linked-list-cycle-ii/142.环形链表_ii.py)                                                 |   ✅   |
 | 160  |         相交链表          |                                            [Python](./160.intersection-of-two-linked-lists/160.相交链表.py)                                            |   ✅   |
+| 167  | 两数之和*ii*输入有序数组  |                                    [Python](./167.two-sum-ii-input-array-is-sorted/167.两数之和_ii_输入有序数组.py)                                    |        |
 | 206  |         反转链表          |                                                  [Python](./206.reverse-linked-list/206.反转链表.py)                                                   |   ✅   |
 | 234  |         回文链表          |                                                 [Python](./234.palindrome-linked-list/234.回文链表.py)                                                 |   ✅   |
 | 283  |          移动零           |                                                       [Python](./283.move-zeroes/283.移动零.py)                                                        |   ✅   |
