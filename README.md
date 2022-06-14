@@ -4,6 +4,7 @@
 |  2   |         两数相加          |                                      [Go](./2.add-two-numbers/2.go) [Swift](./2.add-two-numbers/2.两数相加.swift)                                      |   ✅   |
 |  3   |   无重复字符的最长子串    | [Go](./3.longest-substring-without-repeating-characters/3.go) [Swift](./3.longest-substring-without-repeating-characters/3.无重复字符的最长子串.swift) |   ✅   |
 |  4   | 寻找两个正序数组的中位数  |                                       [Swift](./4.median-of-two-sorted-arrays/4.寻找两个正序数组的中位数.swift)                                        |   ✅   |
+|  5   |       最长回文子串        |                                             [Python](./5.longest-palindromic-substring/5.最长回文子串.py)                                              |   ✅   |
 |  9   |          回文数           |                                                      [Python](./9.palindrome-number/9.回文数.py)                                                       |        |
 |  13  |      罗马数字转整数       |                                                  [Python](./13.roman-to-integer/13.罗马数字转整数.py)                                                  |   ✅   |
 |  19  | 删除链表的倒数第-n-个结点 |                                    [Python](./19.remove-nth-node-from-end-of-list/19.删除链表的倒数第-n-个结点.py)                                     |   ✅   |
