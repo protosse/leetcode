@@ -5,7 +5,6 @@
 |  3   |   无重复字符的最长子串    | [Go](./3.longest-substring-without-repeating-characters/3.go) [Swift](./3.longest-substring-without-repeating-characters/3.无重复字符的最长子串.swift) |   ✅   |
 |  4   | 寻找两个正序数组的中位数  |                                       [Swift](./4.median-of-two-sorted-arrays/4.寻找两个正序数组的中位数.swift)                                        |   ✅   |
 |  5   |       最长回文子串        |                                             [Python](./5.longest-palindromic-substring/5.最长回文子串.py)                                              |   ✅   |
-|  9   |          回文数           |                                                      [Python](./9.palindrome-number/9.回文数.py)                                                       |        |
 |  13  |      罗马数字转整数       |                                                  [Python](./13.roman-to-integer/13.罗马数字转整数.py)                                                  |   ✅   |
 |  19  | 删除链表的倒数第-n-个结点 |                                    [Python](./19.remove-nth-node-from-end-of-list/19.删除链表的倒数第-n-个结点.py)                                     |   ✅   |
 |  21  |     合并两个有序链表      |                                              [Python](./21.merge-two-sorted-lists/21.合并两个有序链表.py)                                              |   ✅   |
@@ -24,6 +23,7 @@
 | 206  |         反转链表          |                                                  [Python](./206.reverse-linked-list/206.反转链表.py)                                                   |   ✅   |
 | 234  |         回文链表          |                                                 [Python](./234.palindrome-linked-list/234.回文链表.py)                                                 |   ✅   |
 | 283  |          移动零           |                                                       [Python](./283.move-zeroes/283.移动零.py)                                                        |   ✅   |
+| 303  |  区域和检索\_数组不可变   |                                         [Python](./303.range-sum-query-immutable/303.区域和检索_数组不可变.py)                                         |   ✅   |
 | 344  |        反转字符串         |                                                    [Python](./344.reverse-string/344.反转字符串.py)                                                    |   ✅   |
 | 876  |      链表的中间结点       |                                            [Python](./876.middle-of-the-linked-list/876.链表的中间结点.py)                                             |   ✅   |
 | 1247 |  交换字符使得字符串相同   |     [Go](./1247.minimum-swaps-to-make-strings-equal/1247.go) [Swift](./1247.minimum-swaps-to-make-strings-equal/1247.交换字符使得字符串相同.swift)     |   ✅   |
