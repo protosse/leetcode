@@ -78,7 +78,18 @@ class Solution:
         return []
 
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        pass
+        left, right = 0, len(numbers) - 1
+        while left < right:
+            middle = (left + right) // 2
+            if numbers[left] + numbers[middle] > target:
+                right = middle - 1
+            elif numbers[middle] + numbers[right] < target:
+                left = middle + 1
+            elif numbers[left] + numbers[right] > target:
+                right -= 1
+            elif numbers[left] + numbers[right] < target:
+                left += 1
+            else:
+                return [left + 1, right + 1]
+        return []
 # @lc code=end
-
-
