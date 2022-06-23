@@ -26,5 +26,6 @@
 | 303  |   区域和检索\_数组不可变   |                                         [Python](./303.range-sum-query-immutable/303.区域和检索_数组不可变.py)                                         |   ✅   |
 | 304  | 二维区域和检索\_矩阵不可变 |                                     [Python](./304.range-sum-query-2d-immutable/304.二维区域和检索_矩阵不可变.py)                                      |   ✅   |
 | 344  |         反转字符串         |                                                    [Python](./344.reverse-string/344.反转字符串.py)                                                    |   ✅   |
+| 370  |          区间加法          |                                                     [Python](./370.range-addition/370.区间加法.py)                                                     |   ✅   |
 | 876  |       链表的中间结点       |                                            [Python](./876.middle-of-the-linked-list/876.链表的中间结点.py)                                             |   ✅   |
 | 1247 |   交换字符使得字符串相同   |     [Go](./1247.minimum-swaps-to-make-strings-equal/1247.go) [Swift](./1247.minimum-swaps-to-make-strings-equal/1247.交换字符使得字符串相同.swift)     |   ✅   |
