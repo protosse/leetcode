@@ -43,11 +43,7 @@ class Solution:
         # 差分数组初始也是0
         df = [0 for _ in range(length)]
 
-        for update in updates:
-            i = update[0]
-            j = update[1]
-            inc = update[2]
-
+        for i, j, inc in updates:
             df[i] += inc
             # 边界判断
             if j+1 < length:
