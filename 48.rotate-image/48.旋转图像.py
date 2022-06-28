@@ -62,13 +62,25 @@ class Solution:
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
         for row in matrix:
-            i = 0
-            j = n - 1
-            while i < j:
-                # 反转行
-                row[i], row[j] = row[j], row[i]
-                i+=1
-                j-=1
+            self.reverse(row)
+
+    def reverse(self, row: List[int]):
+        i = 0
+        j = len(row) - 1
+        while i < j:
+            # 反转行
+            row[i], row[j] = row[j], row[i]
+            i+=1
+            j-=1
+    
+    def rotate_counterclockwise(self, matrix: List[List[int]]) -> None:
+        n = len(matrix)
+        for i in range(n):
+            for j in range(n-i):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+        for row in matrix:
+            self.reverse(row)
 
 
 # @lc code=end
