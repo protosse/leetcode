@@ -12,6 +12,7 @@
 |  25  |     k\_个一组翻转链表      |                                             [Python](./25.reverse-nodes-in-k-group/25.k_个一组翻转链表.py)                                             |   ✅   |
 |  26  |   删除有序数组中的重复项   |                                    [Python](./26.remove-duplicates-from-sorted-array/26.删除有序数组中的重复项.py)                                     |   ✅   |
 |  27  |          移除元素          |                                                      [Python](./27.remove-element/27.移除元素.py)                                                      |   ✅   |
+|  48  |          旋转图像          |                                                       [Python](./48.rotate-image/48.旋转图像.py)                                                       |   ✅   |
 |  83  |  删除排序链表中的重复元素  |                                    [Python](./83.remove-duplicates-from-sorted-list/83.删除排序链表中的重复元素.py)                                    |   ✅   |
 |  92  |        反转链表\_ii        |                                                [Python](./92.reverse-linked-list-ii/92.反转链表-ii.py)                                                 |   ✅   |
 | 110  |         平衡二叉树         |                            [Go](./110.balanced-binary-tree/110.go) [Swift](./110.balanced-binary-tree/110.平衡二叉树.swift)                            |   ✅   |
