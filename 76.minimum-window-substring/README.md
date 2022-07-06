@@ -25,12 +25,14 @@
 之后重复上述过程，先移动 right，再移动 left…… 直到 right 指针到达字符串 S 的末端，算法结束。
 
 ``` python
+from typing import Dict
+
 def slidingWindow(s: str, t: str):
     """
     滑动窗口算法框架
     """
-    need = Dict[str, int] = {}
-    window = Dict[str, int] = {}
+    need: Dict[str, int] = {}
+    window: Dict[str, int] = {}
     for c in t:
         need[c] = need.get(c, 0) + 1
     left, right, valid = 0, 0, 0
