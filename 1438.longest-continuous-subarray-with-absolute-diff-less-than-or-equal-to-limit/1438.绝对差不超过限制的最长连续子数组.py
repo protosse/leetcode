@@ -63,11 +63,13 @@
 # 
 #
 
+from collections import deque
 from typing import List
 
 # @lc code=start
 class Solution:
-    def longestSubarray(self, nums: List[int], limit: int) -> int:
+    # 超时版本
+    def longestSubarray_timeout(self, nums: List[int], limit: int) -> int:
         left, right = 0, 0
         count = 0
         while right < len(nums):
@@ -77,10 +79,45 @@ class Solution:
                 res = abs(c - nums[i])
                 if res > limit:
                     left = i + 1
-                    break
+            count = max(count, right - left + 1)
+            right += 1
+        return count
+
+    def longestSubarray(self, nums: List[int], limit: int) -> int:
+        left, right = 0, 0
+        count = 0
+
+        # maxQue为一个单调递减的序列
+        # minQue为一个单调递增的序列
+        maxQue, minQue = deque(), deque()
+
+        while right < len(nums):
+            c = nums[right]
+
+            # maxQue中记录比c大的值
+            while maxQue and maxQue[-1] < c:
+                maxQue.pop()
+
+            # minQue中记录比c小的值
+            while minQue and minQue[-1] > c:
+                minQue.pop()
+
+            maxQue.append(c)
+            minQue.append(c)
+
+            while maxQue and minQue and maxQue[0] - minQue[0] > limit:
+                if nums[left] == minQue[0]:
+                    minQue.popleft()
+                if nums[left] == maxQue[0]:
+                    maxQue.popleft()
+                left += 1
+
             count = max(count, right - left + 1)
             right += 1
         return count
 
 # @lc code=end
 
+
+nums = [24,12,71,33,5,87,10,11,3,58,2,97,97,36,32,35,15,80,24,45,38,9,22,21,33,68,22,85,35,83,92,38,59,90,42,64,61,15,4,40,50,44,54,25,34,14,33,94,66,27,78,56,3,29,3,51,19,5,93,21,58,91,65,87,55,70,29,81,89,67,58,29,68,84,4,51,87,74,42,85,81,55,8,95,39]
+print(Solution().longestSubarray(nums, 87))
