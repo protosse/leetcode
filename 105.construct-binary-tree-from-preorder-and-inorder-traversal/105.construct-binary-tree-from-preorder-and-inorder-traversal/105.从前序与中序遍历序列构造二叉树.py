@@ -65,6 +65,32 @@ class TreeNode:
 #         self.right = right
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        pass
+        pre_n = len(preorder)
+        in_n = len(inorder)
+        if len(preorder) != len(inorder) or pre_n == 0:
+            return None
+        self.inOrderMap = {}
+        for i, v in enumerate(inorder):
+            self.inOrderMap[v] = i
+        return self.f(preorder, 0, pre_n -1, inorder, 0, in_n - 1)
+        
+    def f(self, preorder: List[int], l1: int, r1: int, inorder: List[int], l2: int, r2: int) -> Optional[TreeNode]:
+        if l1 > r1:
+            return None
+        head = TreeNode(preorder[l1])
+        if l1 == r1:
+            return head
+        find = self.inOrderMap[preorder[l1]]
+        step = find - l2
+        head.left = self.f(
+            preorder, l1 + 1, l1 + step,
+            inorder, l2, find - 1
+        )
+        head.right = self.f(
+            preorder, l1 + step + 1, r1,
+            inorder, find + 1, r2
+        )
+        return head
+
 # @lc code=end
 
