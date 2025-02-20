@@ -45,40 +45,40 @@ def squareArray(nums: list[int]) -> list[int]:
     return [n**2 for n in nums]
 
 
-def quickSort(nums: list[int]) -> list[int]:
-    """快速排序
+def partition(nums: list[int], left: int, right: int) -> int:
+    """快速排序 分区函数
 
     Args:
         nums (list[int]): 数组
+        left (int): 左
+        right (int): 右
 
     Returns:
-        list[int]: 排序后数组
+        int: left对应num的最终位置
     """
-    if len(nums) <= 1:
-        return nums
+    num = nums[left]
+    while left < right:
+        while left < right and nums[right] >= num:
+            right -= 1
+        nums[left] = nums[right]
+        while left < right and nums[left] <= num:
+            left += 1
+        nums[right] = nums[left]
+    nums[left] = num
+    return left
 
-    stack = [(0, len(nums) - 1)]
 
-    while stack:
-        start, end = stack.pop()
-        if start >= end:
-            continue
+def quickSort(nums: list[int], left: int, right: int):
+    """快速排序
+    时间复杂度为O(nlogn)
+    空间复杂度为O(logn)
 
-        pivot = nums[start]
-        low = start
-        high = end
-
-        while low < high:
-            while low < high and nums[high] >= pivot:
-                high -= 1
-            nums[low] = nums[high]
-            while low < high and nums[low] <= pivot:
-                low += 1
-            nums[high] = nums[low]
-
-        nums[low] = pivot
-
-        stack.append((start, low - 1))
-        stack.append((low + 1, end))
-
-    return nums
+    Args:
+        nums (list[int]): 数组
+        left (int): 左
+        right (int): 右
+    """
+    if left < right:
+        pi = partition(nums, left, right)
+        quickSort(nums, left, pi - 1)
+        quickSort(nums, pi + 1, right)
