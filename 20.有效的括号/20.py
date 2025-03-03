@@ -1,5 +1,4 @@
 # @before-stub-for-debug-begin
-from python3problem20 import *
 from typing import *
 
 # @before-stub-for-debug-end
@@ -84,13 +83,21 @@ from typing import *
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        pair = {"(": ")", "[": "]", "{": "}"}
         for c in s:
-            if c in pair:
+            if c in "{([":
                 stack.append(c)
-            elif pair[stack.pop()] != c:
-                stack.append(c)
-        return len(stack) == 0
+            elif stack and self.leftOf(c) == stack[-1]:
+                stack.pop()
+            else:
+                return False
+        return not stack
+
+    def leftOf(self, c: str) -> str:
+        if c == "}":
+            return "{"
+        if c == ")":
+            return "("
+        return "["
 
 
 # @lc code=end
