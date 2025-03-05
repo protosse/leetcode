@@ -69,24 +69,20 @@ class Solution:
     ) -> Optional[ListNode]:
         if not list1 or not list2:
             return list1 if list1 else list2
-        head = ListNode()
-        cur = head
+        dummy = ListNode()
+        cur = dummy
         p = list1
         q = list2
         while p and q:
             if p.val < q.val:
                 cur.next = p
-                cur = p
                 p = p.next
             else:
                 cur.next = q
-                cur = q
                 q = q.next
-        if not p:
-            cur.next = q
-        if not q:
-            cur.next = p
-        return head.next
+            cur = cur.next
+        cur.next = p if p else q
+        return dummy.next
 
 
 # @lc code=end
