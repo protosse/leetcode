@@ -78,39 +78,8 @@ class ListNode:
 #         self.next = next
 class Solution:
 
-    def mergeTwoLists(
-        self, list1: Optional[ListNode], list2: Optional[ListNode]
-    ) -> Optional[ListNode]:
-        if not list1 or not list2:
-            return list1 if list1 else list2
-        dummy = ListNode()
-        cur = dummy
-        p = list1
-        q = list2
-        while p and q:
-            if p.val < q.val:
-                cur.next = p
-                p = p.next
-            else:
-                cur.next = q
-                q = q.next
-            cur = cur.next
-        cur.next = p if p else q
-        return dummy.next
-
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        if not lists:
-            return None
-
-        def merge(lists, left, right):
-            if left == right:
-                return lists[left]
-            mid = (left + right) // 2
-            l1 = merge(lists, left, mid)
-            l2 = merge(lists, mid + 1, right)
-            return self.mergeTwoLists(l1, l2)
-
-        return merge(lists, 0, len(lists) - 1)
+        pass
 
 
 # @lc code=end
