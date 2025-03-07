@@ -1,3 +1,8 @@
+# @before-stub-for-debug-begin
+from typing import *
+
+# @before-stub-for-debug-end
+
 #
 # @lc app=leetcode.cn id=23 lang=python3
 # @lcpr version=30100
@@ -76,10 +81,30 @@ class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
+import heapq
+
+ListNode.__lt__ = lambda a, b: a.val < b.val
+
+
 class Solution:
 
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        pass
+        dummy = ListNode()
+        cur = dummy
+        pq = []
+        for n in lists:
+            if n:
+                heapq.heappush(pq, n)
+
+        while pq:
+            n = heapq.heappop(pq)
+            cur.next = n
+            cur = cur.next
+            if n.next:
+                heapq.heappush(pq, n.next)
+                n.next = None
+        return dummy.next
 
 
 # @lc code=end
