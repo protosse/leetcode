@@ -70,25 +70,27 @@ class ListNode:
 #         self.next = next
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        if not head:
-            return None
-        h = head
+        # 虚拟头结点
+        dummy = ListNode(-1)
+        dummy.next = head
+        # 删除倒数第 n 个，要先找倒数第 n + 1 个节点
+        x = self.findFromEnd(dummy, n + 1)
+        # 删掉倒数第 n 个节点
+        x.next = x.next.next
+        return dummy.next
+
+    def findFromEnd(sefl, head: ListNode, k: int) -> ListNode:
         p1 = head
-        for i in range(n):
-            if p1:
-                p1 = p1.next
-        if not p1:
-            h = h.next
-            return h
-        p2 = head
-        p2_pre = None
-        while p1:
+        # p1 先走 k 步
+        for i in range(k):
             p1 = p1.next
-            p2_pre = p2
+        p2 = head
+        # p1 和 p2 同时走 n - k 步
+        while p1 != None:
             p2 = p2.next
-        p2_pre.next = p2.next
-        p2.next = None
-        return h
+            p1 = p1.next
+        # p2 现在指向第 n - k + 1 个节点，即倒数第 k 个节点
+        return p2
 
 
 # @lc code=end
