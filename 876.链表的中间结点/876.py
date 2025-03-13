@@ -62,7 +62,15 @@ class ListNode:
 #         self.next = next
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        pass
+        # 12
+        # 123
+        # 1234
+        p1 = head
+        p2 = head
+        while p1 and p1.next:
+            p2 = p2.next
+            p1 = p1.next.next
+        return p2
 
 
 # @lc code=end
