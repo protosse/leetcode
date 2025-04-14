@@ -56,19 +56,18 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         left, right = 0, 0
+        # key是字符，value是字符在s中的index
         window = {}
-        res = 0
+        res = 1
         while right < len(s):
             c = s[right]
-            right += 1
-            window[c] = window.get(c, 0) + 1
-
-            while window.get(c) > 1:
-                d = s[left]
-                left += 1
-                window[d] -= 1
-
+            # 如果重复了，这里可以直接将left移动到第一个c出现的位置
+            if c in window and window[c] > left:
+                left = window[c]
+            window[c] = right
+            # 这里left与right之间肯定是不重复的子串
             res = max(res, right - left)
+            right += 1
         return res
 
 
