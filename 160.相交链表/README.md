@@ -1,4 +1,4 @@
-![img](image/README/160.png)
+![img](image/160.excalidraw.png)
 
 可以用两个指针 p1 p2 分别遍历 A B 两个链表，当 p1 遍历完 A 后继续遍历 B，p2 遍历完 B 后继续遍历 A，这样在逻辑上就相当于两条链表连在一起了
 

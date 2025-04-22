@@ -1,4 +1,4 @@
-![](image/README/26.png)
+![](image/26.excalidraw.png)
 可以使用快慢指针
 
 让慢指针 slow 走在后面，快指针 fast 走在前面探路，找到一个不重复的元素就让 slow 前进一步并赋值。
