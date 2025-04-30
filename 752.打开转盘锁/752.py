@@ -94,6 +94,36 @@ class Solution:
             step += 1
         return -1
 
+    def openLock_two_way_bfs(self, deadends: List[str], target: str) -> int:
+        dead = set(deadends)
+        if "0000" in dead:
+            return -1
+        if target == "0000":
+            return 0
+        q1 = set()
+        q2 = set()
+        visited = set()
+        step = 0
+        q1.add("0000")
+        visited.add("0000")
+        q2.add(target)
+        visited.add(target)
+
+        while q1 and q2:
+            step += 1
+            newQ1 = set()
+            for cur in q1:
+                for neighbor in self.getNeighbors(cur):
+                    if neighbor in q2:
+                        return step
+                    if neighbor not in visited and neighbor not in dead:
+                        newQ1.add(neighbor)
+                        visited.add(neighbor)
+            q1 = newQ1
+            if len(q1) < len(q2):
+                q1, q2 = q2, q1
+        return -1
+
     def plusOne(self, s: str, i: int) -> str:
         """在第i位上加1，即向上拨动第i位"""
         chrs = list(s)
