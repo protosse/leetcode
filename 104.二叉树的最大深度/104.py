@@ -65,7 +65,29 @@ class TreeNode:
 #         self.left = left
 #         self.right = right
 class Solution:
+
+    def __init__(self):
+        self.depth = 0
+        self.res = 0
+
     def maxDepth(self, root: Optional[TreeNode]) -> int:
+        self.traverse(root)
+        return self.res
+
+    def traverse(self, root: Optional[TreeNode]):
+        if root == None:
+            return
+        # 前序遍历位置（进入节点）增加深度
+        self.depth += 1
+        # 遍历到叶子节点时记录最大深度
+        if root.left is None and root.right is None:
+            self.res = max(self.res, self.depth)
+        self.traverse(root.left)
+        self.traverse(root.right)
+        # 后序遍历位置（离开节点）减少深度
+        self.depth -= 1
+
+    def maxDepth_1(self, root: Optional[TreeNode]) -> int:
         if root == None:
             return 0
         left = self.maxDepth(root.left)
