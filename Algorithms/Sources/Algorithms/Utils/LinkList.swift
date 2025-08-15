@@ -31,36 +31,3 @@ public func linkedListToArray(_ node: ListNode?) -> [Int] {
     }
     return result
 }
-
-/// 21.合并两个有序链表
-func mergeTwoLists(_ list1: ListNode?, _ list2: ListNode?) -> ListNode? {
-    guard let list1, let list2 else {
-        return list1 == nil ? list2 : list1
-    }
-    
-    let dummy = ListNode()
-    var cur: ListNode? = dummy
-    var p: ListNode? = list1
-    var q: ListNode? = list2
-    
-    while p != nil && q != nil {
-        if p!.val < q!.val {
-            cur?.next = p
-            p = p?.next
-        } else {
-            cur?.next = q
-            q = q?.next
-        }
-        cur = cur?.next
-    }
-    
-    cur?.next = p == nil ? q : p
-    return dummy.next
-}
-
-/// 206.反转链表
-func reverseList(_ head: ListNode?) -> ListNode? {
-    guard let head else {
-        return nil
-    }
-}
