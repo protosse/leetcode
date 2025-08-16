@@ -66,17 +66,23 @@
 
 
 class Solution:
-    # "3[a2[c]]"
+    # abc3[cd]xyz
     def decodeString(self, s: str) -> str:
         stack = []
-        num = 0
-        res = ""
+        res, num = "", 0
         for c in s:
             if c.isnumeric():
                 num = num * 10 + int(c)
             elif c == "[":
-                stack.append((num, res))
-            
+                # 保存num和之前的res
+                stack.append([num, res])
+                res, num = "", 0
+            elif c == "]":
+                cur_num, last_res = stack.pop()
+                res = last_res + cur_num * res
+            else:
+                res += c
+        return res
 
 
 # @lc code=end
